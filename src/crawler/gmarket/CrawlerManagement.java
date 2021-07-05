@@ -85,13 +85,15 @@ public class CrawlerManagement {
 
 	// 상품 명 변경
 	// '/' 또는 '\' 이 들어가있는 상품명의 경우 상품명을 경로로 인식하므로 변경
-	// 변경 방법 : '/' , '\' 제거
+	// 특수문자는 폴더 명으로 지정 불가능 하므로 제거
+	// 변경 방법 : '/' , '\' 등 특수문자 제거
 	// title : 변경할 상품 명
 	public String reNameTitle(String title) {
 		String newTitle = title;
 
 		newTitle = newTitle.replaceAll("\\\\", "");
 		newTitle = newTitle.replaceAll("/", "");
+		newTitle = newTitle.replaceAll(":", "");
 
 		return newTitle;
 	}

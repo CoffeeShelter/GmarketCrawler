@@ -1,13 +1,19 @@
 package crawler;
 
+import java.util.Vector;
+
 import crawler.gmarket.CrawlerManagement;
 
 public class Test {
 
 	public static void main(String[] args) {
-		String title = "<8:2 비타민 ., 안녕>";
+		Vector<String> paths = new Vector<>();
 		CrawlerManagement c = new CrawlerManagement();
-		System.out.println(c.reNameTitle(title));
+		
+		paths = c.getDetailImage("http://item.gmarket.co.kr/Item?goodscode=1816071184");
+		for(String path : paths) {
+			System.out.println(path);
+		}
 	}
 
 }

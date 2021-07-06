@@ -49,12 +49,12 @@ public class CrawlerManagement {
 			Document html = conn.get();
 			Elements elements = html.select(selector);
 			String productAddress = elements.attr("href");
-			if (productAddress != null || productAddress != "")
+			if (productAddress != null && productAddress != "")
 				return productAddress;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+		
 		return null;
 	}
 
@@ -143,6 +143,67 @@ public class CrawlerManagement {
 
 			for (Element element : elements) {
 				imagePath.add(element.attr("src"));
+			}
+			
+			// 가져온 이미지가 0개 일 경우, 잘 못된 경로라 가정하고 다른 경로로 탐색
+			// 여러 경우의 경로를 지정
+			if(imagePath.size() == 0) {
+				selector = "#basic_detail_html > div.prd-box > center > p > img";
+				elements = html.select(selector);
+				
+				for (Element element : elements) {
+					imagePath.add(element.attr("src"));
+				}
+			}
+			
+			// 가져온 이미지가 0개 일 경우, 잘 못된 경로라 가정하고 다른 경로로 탐색
+			if(imagePath.size() == 0) {
+				selector = "#basic_detail_html > p > img";
+				elements = html.select(selector);
+				
+				for (Element element : elements) {
+					imagePath.add(element.attr("src"));
+				}
+			}
+			
+			// 가져온 이미지가 0개 일 경우, 잘 못된 경로라 가정하고 다른 경로로 탐색
+			if(imagePath.size() == 0) {
+				selector = "#basic_detail_html > img";
+				elements = html.select(selector);
+				
+				for (Element element : elements) {
+					imagePath.add(element.attr("src"));
+				}
+			}
+			
+			// 가져온 이미지가 0개 일 경우, 잘 못된 경로라 가정하고 다른 경로로 탐색
+			if(imagePath.size() == 0) {
+				selector = "#basic_detail_html > div > img";
+				elements = html.select(selector);
+				
+				for (Element element : elements) {
+					imagePath.add(element.attr("src"));
+				}
+			}
+			
+			// 가져온 이미지가 0개 일 경우, 잘 못된 경로라 가정하고 다른 경로로 탐색
+			if(imagePath.size() == 0) {
+				selector = "#basic_detail_html > center > img";
+				elements = html.select(selector);
+				
+				for (Element element : elements) {
+					imagePath.add(element.attr("src"));
+				}
+			}
+			
+			// 가져온 이미지가 0개 일 경우, 잘 못된 경로라 가정하고 다른 경로로 탐색
+			if(imagePath.size() == 0) {
+				selector = "#basic_detail_html > div > div.wrap > div > p > img";
+				elements = html.select(selector);
+				
+				for (Element element : elements) {
+					imagePath.add(element.attr("src"));
+				}
 			}
 
 			return imagePath;

@@ -36,7 +36,7 @@ public class Main {
 					// 상품 주소 얻기
 					String productURL = crawler.getProductAddress(url, count);
 					if (productURL == null || productURL == "") {
-						writer.write(page + "페이지 " + count + "번째 url 오류");
+						writer.write(page + "페이지 " + count + "번째 url 오류\n");
 						writer.flush();
 						writer.close();
 						System.out.println("URL 오류");

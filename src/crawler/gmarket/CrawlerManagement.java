@@ -18,11 +18,7 @@ import org.jsoup.select.Elements;
 
 public class CrawlerManagement {
 
-	private final static int MAX_COUNT = 100;
-	private final static int MAX_PAGE = 50;
-
 	public CrawlerManagement() {
-
 	}
 
 	// 상품 주소 구하기
@@ -93,7 +89,7 @@ public class CrawlerManagement {
 
 		newTitle = newTitle.replaceAll("\\\\", "");
 		newTitle = newTitle.replaceAll("/", "");
-		newTitle = newTitle.replaceAll(":", "");
+		newTitle = newTitle.replaceAll("[-+.^:><,]","");
 
 		return newTitle;
 	}
@@ -169,7 +165,7 @@ public class CrawlerManagement {
 		}
 
 		try {
-			System.out.println(fileName + " 저장중...");
+			System.out.print(fileName + " 저장중...");
 			url = new URL(strUrl);
 
 			in = url.openStream();
@@ -188,8 +184,11 @@ public class CrawlerManagement {
 
 			in.close();
 			out.close();
+			
+			System.out.println(" 완료!");
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println(" 실패...!ㅠㅠ");
 		}
 	}
 

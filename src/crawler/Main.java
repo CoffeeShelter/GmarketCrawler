@@ -35,7 +35,7 @@ public class Main {
 					BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
 					// 상품 주소 얻기
 					String productURL = crawler.getProductAddress(url, count);
-					if (productURL == null) {
+					if (productURL == null || productURL == "") {
 						writer.write(page + "페이지 " + count + "번째 url 오류");
 						writer.flush();
 						writer.close();
